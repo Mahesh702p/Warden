@@ -1,0 +1,16 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Generated runtime databases & logs
+*.db
+*.log
+logsentinel.db
+demo_auth.log
+logsentinel_report.html
+
+# IDE / OS
+.DS_Store
+.vscode/
+.idea/
