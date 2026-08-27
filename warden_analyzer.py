@@ -1,10 +1,10 @@
 """
-logsentinel_analyzer.py
+warden_analyzer.py
 Threat detection rules applied to stored events.
 """
 
 from collections import defaultdict
-import logsentinel_db
+import warden_db
 
 
 BRUTE_FORCE_THRESHOLD    = 5    # failures from same IP → brute force
@@ -239,9 +239,9 @@ def detect_password_spray(events: list[dict]) -> list[dict]:
     return sorted(threats, key=lambda x: x["count"], reverse=True)
 
 
-def run_all_detections(db_path: str = "logsentinel.db") -> list[dict]:
+def run_all_detections(db_path: str = "warden.db") -> list[dict]:
     """Run every detection module and return combined threat list."""
-    events = logsentinel_db.get_all_events(db_path)
+    events = warden_db.get_all_events(db_path)
     threats = []
     threats.extend(detect_brute_force(events))           # per-IP failures
     threats.extend(detect_distributed_attack(events))    # per-USERNAME across many IPs

@@ -89,7 +89,7 @@ def generate_html(stats: dict, threats: list[dict], output_path: str = "logsenti
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>LogSentinel — Security Audit Report</title>
+<title>Warden — Security Audit Report</title>
 <style>
   *{{box-sizing:border-box;margin:0;padding:0}}
   body{{font-family:'Segoe UI',system-ui,sans-serif;background:#13131f;color:#ddd;min-height:100vh}}
@@ -113,7 +113,7 @@ def generate_html(stats: dict, threats: list[dict], output_path: str = "logsenti
   <div style="max-width:960px;margin:0 auto">
     <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px">
       <span style="font-size:28px">🛡️</span>
-      <h1 style="font-size:26px;color:#fff;font-weight:700">LogSentinel</h1>
+      <h1 style="font-size:26px;color:#fff;font-weight:700">Warden</h1>
       <span style="background:#1e3a5f;color:#4af;padding:4px 12px;border-radius:20px;font-size:13px">Security Audit Report</span>
     </div>
     <p style="color:#888;font-size:14px">Generated: {generated_at} &nbsp;|&nbsp; Engine: v1.0</p>

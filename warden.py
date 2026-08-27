@@ -1,11 +1,11 @@
 """
-logsentinel.py
-Main entry point for LogSentinel — Security Log Analysis Engine.
+warden.py
+Main entry point for Warden — Security Log Analysis Engine.
 
 Usage:
-    sudo python3 logsentinel.py                  # analyse real /var/log/auth.log
-    sudo python3 logsentinel.py --demo           # generate synthetic log + analyse
-    sudo python3 logsentinel.py --log /path/to/auth.log   # custom log file
+    sudo python3 warden.py                  # analyse real /var/log/auth.log
+    python3 warden.py --demo                # generate synthetic log + analyse
+    python3 warden.py --log /path/to/auth.log   # custom log file
 """
 
 import sys
@@ -20,16 +20,16 @@ from rich.rule import Rule
 from rich.panel import Panel
 from rich import print as rprint
 
-import logsentinel_parser
-import logsentinel_db
-import logsentinel_analyzer
-import logsentinel_report
+import warden_parser
+import warden_db
+import warden_analyzer
+import warden_report
 
 console = Console()
 
 LOG_PATH   = "/var/log/auth.log"
-DB_PATH    = "logsentinel.db"
-REPORT_OUT = "logsentinel_report.html"
+DB_PATH    = "warden.db"
+REPORT_OUT = "warden_report.html"
 
 
 # ---------------------------------------------------------------------------
@@ -101,9 +101,9 @@ def ingest_log(log_path: str) -> int:
         try:
             with open(log_path, "r", errors="replace") as f:
                 for line in f:
-                    event = logsentinel_parser.parse_line(line)
+                    event = warden_parser.parse_line(line)
                     if event:
-                        logsentinel_db.insert_event(event, DB_PATH)
+                        warden_db.insert_event(event, DB_PATH)
                         count += 1
                     else:
                         skipped += 1
@@ -216,7 +216,7 @@ def display_sudo_log(stats: dict) -> None:
 # ---------------------------------------------------------------------------
 def main():
     parser = argparse.ArgumentParser(
-        description="LogSentinel — Security Log Analysis Engine"
+        description="Warden — Security Log Analysis Engine"
     )
     parser.add_argument("--demo",    action="store_true",
                         help="Use a generated demo log instead of auth.log")
@@ -230,7 +230,7 @@ def main():
 
     # --- Banner ---
     console.print()
-    console.print(Rule("[bold cyan]🛡️  LogSentinel v1.0 — Security Log Analysis Engine[/bold cyan]"))
+    console.print(Rule("[bold cyan]🛡️  Warden v1.0 — Security Log Analysis Engine[/bold cyan]"))
     console.print()
 
     # --- Choose log source ---
@@ -245,7 +245,7 @@ def main():
     console.print()
 
     # --- Initialise DB ---
-    logsentinel_db.init_db(DB_PATH)
+    warden_db.init_db(DB_PATH)
 
     # --- Ingest ---
     total = ingest_log(log_path)
@@ -255,19 +255,19 @@ def main():
         return
 
     # --- Stats ---
-    stats = logsentinel_db.get_stats(DB_PATH)
+    stats = warden_db.get_stats(DB_PATH)
     display_stats(stats)
     display_top_ips(stats)
     display_sudo_log(stats)
 
     # --- Threat analysis ---
-    threats = logsentinel_analyzer.run_all_detections(DB_PATH)
+    threats = warden_analyzer.run_all_detections(DB_PATH)
     display_threats(threats)
 
     # --- HTML Report ---
     if not args.no_report:
         console.print()
-        out = logsentinel_report.generate_html(stats, threats, args.report)
+        out = warden_report.generate_html(stats, threats, args.report)
         cwd = os.getcwd()
         console.print(Rule())
         console.print(f"\n  [bold green]✓ Report saved:[/bold green] [cyan]{os.path.join(cwd, out)}[/cyan]")

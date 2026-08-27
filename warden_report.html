@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Warden — Security Audit Report</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',system-ui,sans-serif;background:#13131f;color:#ddd;min-height:100vh}
+  a{color:#4af}
+  table{width:100%;border-collapse:collapse}
+  th{text-align:left;padding:10px 12px;color:#aaa;font-weight:600;font-size:13px;
+      border-bottom:1px solid #333;background:#1a1a2a}
+  td{padding:9px 12px;border-bottom:1px solid #222;font-size:14px}
+  tr:hover td{background:#1e1e30}
+  .card{background:#1e1e2e;border:1px solid #2a2a3a;border-radius:10px;padding:24px;margin-bottom:20px}
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:24px}
+  .stat-box{background:#1e1e2e;border:1px solid #2a2a3a;border-radius:10px;padding:20px;text-align:center}
+  .stat-num{font-size:32px;font-weight:700;color:#4af}
+  .stat-label{font-size:13px;color:#aaa;margin-top:4px}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div style="background:linear-gradient(135deg,#0d1b2a,#1a0a2e);padding:40px;border-bottom:1px solid #2a2a3a">
+  <div style="max-width:960px;margin:0 auto">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px">
+      <span style="font-size:28px">🛡️</span>
+      <h1 style="font-size:26px;color:#fff;font-weight:700">Warden</h1>
+      <span style="background:#1e3a5f;color:#4af;padding:4px 12px;border-radius:20px;font-size:13px">Security Audit Report</span>
+    </div>
+    <p style="color:#888;font-size:14px">Generated: 2026-08-27 16:56:46 &nbsp;|&nbsp; Engine: v1.0</p>
+  </div>
+</div>
+
+<div style="max-width:960px;margin:0 auto;padding:32px 24px">
+
+  <!-- Risk Banner -->
+  <div style="background:#1e1e2e;border:1px solid #333;border-left:5px solid #ff4444;
+              border-radius:10px;padding:20px 24px;margin-bottom:28px;display:flex;
+              align-items:center;justify-content:space-between">
+    <div>
+      <div style="font-size:13px;color:#aaa;margin-bottom:4px">Overall Risk Level</div>
+      <div style="font-size:22px;font-weight:700;color:#ff4444">CRITICAL</div>
+    </div>
+    <div style="text-align:right">
+      <div style="font-size:13px;color:#aaa;margin-bottom:4px">Threats Detected</div>
+      <div style="font-size:22px;font-weight:700;color:#fff">13</div>
+    </div>
+  </div>
+
+  <!-- Stats Grid -->
+  <div class="stat-grid">
+    <div class="stat-box">
+      <div class="stat-num" style="color:#ff4444">80</div>
+      <div class="stat-label">Failed Logins</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" style="color:#ff6600">0</div>
+      <div class="stat-label">Invalid Users</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" style="color:#44cc88">2</div>
+      <div class="stat-label">Successful Logins</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" style="color:#ffcc00">3</div>
+      <div class="stat-label">Sudo Commands</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" style="color:#cc44ff">1</div>
+      <div class="stat-label">New Users Created</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" style="color:#4af">87</div>
+      <div class="stat-label">Total Events</div>
+    </div>
+  </div>
+
+  <!-- Threats -->
+  <div class="card">
+    <h2 style="color:#fff;margin-bottom:20px;font-size:18px">⚠️  Threat Analysis</h2>
+    
+    <div style="background:#1e1e2e;border:1px solid #333;border-left:4px solid #ff8800;
+                border-radius:8px;padding:20px;margin-bottom:16px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <span style="padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700;background:#ff8800;color:#fff">HIGH</span>
+        <span style="color:#fff;font-size:16px;font-weight:600">BRUTE FORCE</span>
+      </div>
+      <p style="color:#ccc;margin:0 0 12px 0">IP 45.33.32.156 made 37 failed login attempts.</p>
+      <table style="border-collapse:collapse;width:100%">
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Ip</td>
+              <td style="padding:6px 12px;color:#eee">45.33.32.156</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Count</td>
+              <td style="padding:6px 12px;color:#eee">37</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">First Seen</td>
+              <td style="padding:6px 12px;color:#eee">2026-08-27 14:56:48</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Last Seen</td>
+              <td style="padding:6px 12px;color:#eee">2026-08-27 15:17:05</td>
+            </tr></table>
+    </div>
+    <div style="background:#1e1e2e;border:1px solid #333;border-left:4px solid #ff8800;
+                border-radius:8px;padding:20px;margin-bottom:16px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <span style="padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700;background:#ff8800;color:#fff">HIGH</span>
+        <span style="color:#fff;font-size:16px;font-weight:600">BRUTE FORCE</span>
+      </div>
+      <p style="color:#ccc;margin:0 0 12px 0">IP 185.220.101.12 made 29 failed login attempts.</p>
+      <table style="border-collapse:collapse;width:100%">
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Ip</td>
+              <td style="padding:6px 12px;color:#eee">185.220.101.12</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Count</td>
+              <td style="padding:6px 12px;color:#eee">29</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">First Seen</td>
+              <td style="padding:6px 12px;color:#eee">2026-08-27 14:56:45</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Last Seen</td>
+              <td style="padding:6px 12px;color:#eee">2026-08-27 15:18:20</td>
+            </tr></table>
+    </div>
+    <div style="background:#1e1e2e;border:1px solid #333;border-left:4px solid #ffcc00;
+                border-radius:8px;padding:20px;margin-bottom:16px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <span style="padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700;background:#ffcc00;color:#111">MEDIUM</span>
+        <span style="color:#fff;font-size:16px;font-weight:600">BRUTE FORCE</span>
+      </div>
+      <p style="color:#ccc;margin:0 0 12px 0">IP 212.47.234.191 made 6 failed login attempts.</p>
+      <table style="border-collapse:collapse;width:100%">
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Ip</td>
+              <td style="padding:6px 12px;color:#eee">212.47.234.191</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Count</td>
+              <td style="padding:6px 12px;color:#eee">6</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">First Seen</td>
+              <td style="padding:6px 12px;color:#eee">2026-08-27 15:16:45</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Last Seen</td>
+              <td style="padding:6px 12px;color:#eee">2026-08-27 15:18:10</td>
+            </tr></table>
+    </div>
+    <div style="background:#1e1e2e;border:1px solid #333;border-left:4px solid #ffcc00;
+                border-radius:8px;padding:20px;margin-bottom:16px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <span style="padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700;background:#ffcc00;color:#111">MEDIUM</span>
+        <span style="color:#fff;font-size:16px;font-weight:600">DISTRIBUTED BRUTE FORCE</span>
+      </div>
+      <p style="color:#ccc;margin:0 0 12px 0">Account 'mahesh' was targeted by 15 failed login attempts from 4 unique IP addresses — likely a botnet or distributed attack. No single IP exceeded the per-IP threshold.</p>
+      <table style="border-collapse:collapse;width:100%">
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Count</td>
+              <td style="padding:6px 12px;color:#eee">15</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Source Ips</td>
+              <td style="padding:6px 12px;color:#eee">192.168.1.5, 103.45.67.89, 45.33.32.156, 185.220.101.12</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">First Seen</td>
+              <td style="padding:6px 12px;color:#eee">2026-08-27 14:56:48</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Last Seen</td>
+              <td style="padding:6px 12px;color:#eee">2026-08-27 15:17:45</td>
+            </tr></table>
+    </div>
+    <div style="background:#1e1e2e;border:1px solid #333;border-left:4px solid #ffcc00;
+                border-radius:8px;padding:20px;margin-bottom:16px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <span style="padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700;background:#ffcc00;color:#111">MEDIUM</span>
+        <span style="color:#fff;font-size:16px;font-weight:600">DISTRIBUTED BRUTE FORCE</span>
+      </div>
+      <p style="color:#ccc;margin:0 0 12px 0">Account 'oracle' was targeted by 13 failed login attempts from 3 unique IP addresses — likely a botnet or distributed attack. No single IP exceeded the per-IP threshold.</p>
+      <table style="border-collapse:collapse;width:100%">
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Count</td>
+              <td style="padding:6px 12px;color:#eee">13</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Source Ips</td>
+              <td style="padding:6px 12px;color:#eee">45.33.32.156, 212.47.234.191, 185.220.101.12</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">First Seen</td>
+              <td style="padding:6px 12px;color:#eee">2026-08-27 14:56:51</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Last Seen</td>
+              <td style="padding:6px 12px;color:#eee">2026-08-27 15:17:20</td>
+            </tr></table>
+    </div>
+    <div style="background:#1e1e2e;border:1px solid #333;border-left:4px solid #ffcc00;
+                border-radius:8px;padding:20px;margin-bottom:16px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <span style="padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700;background:#ffcc00;color:#111">MEDIUM</span>
+        <span style="color:#fff;font-size:16px;font-weight:600">DISTRIBUTED BRUTE FORCE</span>
+      </div>
+      <p style="color:#ccc;margin:0 0 12px 0">Account 'ubuntu' was targeted by 11 failed login attempts from 5 unique IP addresses — likely a botnet or distributed attack. No single IP exceeded the per-IP threshold.</p>
+      <table style="border-collapse:collapse;width:100%">
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Count</td>
+              <td style="padding:6px 12px;color:#eee">11</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Source Ips</td>
+              <td style="padding:6px 12px;color:#eee">185.220.101.12, 103.45.67.89, 45.33.32.156, 212.47.234.191, 10.0.0.25</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">First Seen</td>
+              <td style="padding:6px 12px;color:#eee">2026-08-27 14:56:45</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Last Seen</td>
+              <td style="padding:6px 12px;color:#eee">2026-08-27 15:18:20</td>
+            </tr></table>
+    </div>
+    <div style="background:#1e1e2e;border:1px solid #333;border-left:4px solid #ffcc00;
+                border-radius:8px;padding:20px;margin-bottom:16px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <span style="padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700;background:#ffcc00;color:#111">MEDIUM</span>
+        <span style="color:#fff;font-size:16px;font-weight:600">DISTRIBUTED BRUTE FORCE</span>
+      </div>
+      <p style="color:#ccc;margin:0 0 12px 0">Account 'admin' was targeted by 10 failed login attempts from 3 unique IP addresses — likely a botnet or distributed attack. No single IP exceeded the per-IP threshold.</p>
+      <table style="border-collapse:collapse;width:100%">
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Count</td>
+              <td style="padding:6px 12px;color:#eee">10</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Source Ips</td>
+              <td style="padding:6px 12px;color:#eee">45.33.32.156, 212.47.234.191, 185.220.101.12</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">First Seen</td>
+              <td style="padding:6px 12px;color:#eee">2026-08-27 14:57:03</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Last Seen</td>
+              <td style="padding:6px 12px;color:#eee">2026-08-27 15:16:55</td>
+            </tr></table>
+    </div>
+    <div style="background:#1e1e2e;border:1px solid #333;border-left:4px solid #ffcc00;
+                border-radius:8px;padding:20px;margin-bottom:16px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <span style="padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700;background:#ffcc00;color:#111">MEDIUM</span>
+        <span style="color:#fff;font-size:16px;font-weight:600">PASSWORD SPRAY</span>
+      </div>
+      <p style="color:#ccc;margin:0 0 12px 0">IP 185.220.101.12 attempted login against 8 different usernames — pattern consistent with password spray attack (one password tried across many accounts to avoid lockout).</p>
+      <table style="border-collapse:collapse;width:100%">
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Ip</td>
+              <td style="padding:6px 12px;color:#eee">185.220.101.12</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Count</td>
+              <td style="padding:6px 12px;color:#eee">8</td>
+            </tr></table>
+    </div>
+    <div style="background:#1e1e2e;border:1px solid #333;border-left:4px solid #ffcc00;
+                border-radius:8px;padding:20px;margin-bottom:16px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <span style="padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700;background:#ffcc00;color:#111">MEDIUM</span>
+        <span style="color:#fff;font-size:16px;font-weight:600">PASSWORD SPRAY</span>
+      </div>
+      <p style="color:#ccc;margin:0 0 12px 0">IP 45.33.32.156 attempted login against 8 different usernames — pattern consistent with password spray attack (one password tried across many accounts to avoid lockout).</p>
+      <table style="border-collapse:collapse;width:100%">
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Ip</td>
+              <td style="padding:6px 12px;color:#eee">45.33.32.156</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Count</td>
+              <td style="padding:6px 12px;color:#eee">8</td>
+            </tr></table>
+    </div>
+    <div style="background:#1e1e2e;border:1px solid #333;border-left:4px solid #ff4444;
+                border-radius:8px;padding:20px;margin-bottom:16px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <span style="padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700;background:#ff4444;color:#fff">CRITICAL</span>
+        <span style="color:#fff;font-size:16px;font-weight:600">CREDENTIAL COMPROMISE</span>
+      </div>
+      <p style="color:#ccc;margin:0 0 12px 0">IP 185.220.101.12 had 29 failed attempts then successfully logged in as: ubuntu</p>
+      <table style="border-collapse:collapse;width:100%">
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Ip</td>
+              <td style="padding:6px 12px;color:#eee">185.220.101.12</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Failures</td>
+              <td style="padding:6px 12px;color:#eee">29</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Users Gained</td>
+              <td style="padding:6px 12px;color:#eee">ubuntu</td>
+            </tr></table>
+    </div>
+    <div style="background:#1e1e2e;border:1px solid #333;border-left:4px solid #ff8800;
+                border-radius:8px;padding:20px;margin-bottom:16px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <span style="padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700;background:#ff8800;color:#fff">HIGH</span>
+        <span style="color:#fff;font-size:16px;font-weight:600">ROOT ACCOUNT TARGETING</span>
+      </div>
+      <p style="color:#ccc;margin:0 0 12px 0">6 direct root login attempts from 4 unique IP(s).</p>
+      <table style="border-collapse:collapse;width:100%">
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Count</td>
+              <td style="padding:6px 12px;color:#eee">6</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Source Ips</td>
+              <td style="padding:6px 12px;color:#eee">103.45.67.89, 10.0.0.25, 45.33.32.156, 185.220.101.12</td>
+            </tr></table>
+    </div>
+    <div style="background:#1e1e2e;border:1px solid #333;border-left:4px solid #ffcc00;
+                border-radius:8px;padding:20px;margin-bottom:16px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <span style="padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700;background:#ffcc00;color:#111">MEDIUM</span>
+        <span style="color:#fff;font-size:16px;font-weight:600">NEW USER CREATED</span>
+      </div>
+      <p style="color:#ccc;margin:0 0 12px 0">1 new user account(s) created: hacker</p>
+      <table style="border-collapse:collapse;width:100%">
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Count</td>
+              <td style="padding:6px 12px;color:#eee">1</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Users</td>
+              <td style="padding:6px 12px;color:#eee">hacker</td>
+            </tr></table>
+    </div>
+    <div style="background:#1e1e2e;border:1px solid #333;border-left:4px solid #44aaff;
+                border-radius:8px;padding:20px;margin-bottom:16px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <span style="padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700;background:#44aaff;color:#fff">LOW</span>
+        <span style="color:#fff;font-size:16px;font-weight:600">SUDO PRIVILEGE ESCALATION</span>
+      </div>
+      <p style="color:#ccc;margin:0 0 12px 0">3 sudo command(s) executed by: mahesh</p>
+      <table style="border-collapse:collapse;width:100%">
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Count</td>
+              <td style="padding:6px 12px;color:#eee">3</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 12px;color:#aaa;white-space:nowrap">Users</td>
+              <td style="padding:6px 12px;color:#eee">mahesh</td>
+            </tr></table>
+    </div>
+  </div>
+
+  <!-- Top Attacking IPs -->
+  <div class="card"><h2 style="color:#fff;margin-bottom:16px;font-size:18px">🌐 Top Attacking IPs</h2><table><tr><th>IP Address</th><th>Attempts</th></tr><tr><td>45.33.32.156</td><td style='color:#ff8800;font-weight:700'>37</td></tr><tr><td>185.220.101.12</td><td style='color:#ff8800;font-weight:700'>29</td></tr><tr><td>212.47.234.191</td><td style='color:#ff8800;font-weight:700'>6</td></tr><tr><td>103.45.67.89</td><td style='color:#ff8800;font-weight:700'>4</td></tr><tr><td>192.168.1.5</td><td style='color:#ff8800;font-weight:700'>2</td></tr><tr><td>10.0.0.25</td><td style='color:#ff8800;font-weight:700'>2</td></tr></table></div>
+
+  <!-- Top Targeted Users -->
+  <div class="card"><h2 style="color:#fff;margin-bottom:16px;font-size:18px">👤 Top Targeted Usernames</h2><table><tr><th>Username</th><th>Failed Attempts</th></tr><tr><td>mahesh</td><td style='color:#ff8800;font-weight:700'>15</td></tr><tr><td>oracle</td><td style='color:#ff8800;font-weight:700'>13</td></tr><tr><td>user</td><td style='color:#ff8800;font-weight:700'>11</td></tr><tr><td>ubuntu</td><td style='color:#ff8800;font-weight:700'>11</td></tr><tr><td>admin</td><td style='color:#ff8800;font-weight:700'>10</td></tr><tr><td>pi</td><td style='color:#ff8800;font-weight:700'>8</td></tr><tr><td>test</td><td style='color:#ff8800;font-weight:700'>6</td></tr><tr><td>root</td><td style='color:#ff8800;font-weight:700'>6</td></tr></table></div>
+
+  <!-- Sudo Activity -->
+  <div class="card"><h2 style="color:#fff;margin-bottom:16px;font-size:18px">🔑 Sudo Command Log</h2><table><tr><th>Timestamp</th><th>User</th><th>Command</th></tr><tr><td>2026-08-27 15:08:45</td><td>mahesh</td><td style='font-family:monospace;font-size:12px'>/usr/bin/apt update</td></tr><tr><td>2026-08-27 15:09:45</td><td>mahesh</td><td style='font-family:monospace;font-size:12px'>/bin/cat /etc/shadow</td></tr><tr><td>2026-08-27 15:10:45</td><td>mahesh</td><td style='font-family:monospace;font-size:12px'>/usr/sbin/useradd hacker</td></tr></table></div>
+
+  <!-- Footer -->
+  <div style="text-align:center;padding:24px;color:#555;font-size:13px">
+    LogSentinel v1.0 — Security Log Analysis Engine &nbsp;|&nbsp; 2026-08-27 16:56:46
+  </div>
+
+</div>
+</body>
+</html>
