@@ -19,6 +19,8 @@
 
 ## 🏗️ Architecture & Pipeline
 
+![Warden System Architecture](./architecture_diagram.png)
+
 ```
 /var/log/auth.log (or custom log)
         │
