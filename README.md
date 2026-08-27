@@ -1,4 +1,4 @@
-# 🛡️ LogSentinel — Security Log Analysis Engine
+# 🛡️ Warden — Security Log Analysis Engine
 
 > **A Python-based threat detection tool that analyses Linux authentication logs, detects attack patterns using rule-based logic, persists findings to SQLite, and generates professional HTML security reports.**
 
@@ -6,7 +6,7 @@
 
 ## Table of Contents
 
-1. [What is LogSentinel?](#1-what-is-logsentinel)
+1. [What is Warden?](#1-what-is-logsentinel)
 2. [Why This Project Matters for Deloitte](#2-why-this-project-matters-for-deloitte)
 3. [Project Architecture](#3-project-architecture)
 4. [File-by-File Breakdown](#4-file-by-file-breakdown)
@@ -21,9 +21,9 @@
 
 ---
 
-## 1. What is LogSentinel?
+## 1. What is Warden?
 
-LogSentinel is a **security log analysis engine** that reads the Linux system authentication log (`/var/log/auth.log`) and automatically detects threats such as:
+Warden is a **security log analysis engine** that reads the Linux system authentication log (`/var/log/auth.log`) and automatically detects threats such as:
 
 - SSH brute-force attacks
 - Credential compromise (attacker fails many times, then succeeds)
@@ -45,7 +45,7 @@ A raw line looks like:
 Aug 27 14:10:01 server sshd[1234]: Failed password for root from 185.220.101.12 port 52341 ssh2
 ```
 
-LogSentinel converts thousands of such messy lines into actionable threat intelligence.
+Warden converts thousands of such messy lines into actionable threat intelligence.
 
 ---
 
@@ -53,7 +53,7 @@ LogSentinel converts thousands of such messy lines into actionable threat intell
 
 Deloitte USI's core practice areas include:
 
-| Deloitte Practice | LogSentinel Relevance |
+| Deloitte Practice | Warden Relevance |
 |---|---|
 | **Risk & Advisory** | Threat detection = risk identification |
 | **Cyber & Strategic Risk** | SSH brute force, credential compromise detection |
@@ -71,7 +71,7 @@ The project demonstrates:
 ## 3. Project Architecture
 
 ```
-LogSentinel/
+Warden/
 ├── logsentinel.py           ← Main entry point (run this)
 ├── logsentinel_parser.py    ← Converts raw log lines → Python dicts
 ├── logsentinel_db.py        ← SQLite storage and queries
@@ -234,7 +234,7 @@ pip3 install rich
 ### Run with demo data (no sudo, always works)
 
 ```bash
-cd /home/mahesh/Desktop/Deloitte-Prep/LogSentinel
+cd /home/mahesh/Desktop/Deloitte-Prep/Warden
 python3 logsentinel.py --demo
 xdg-open logsentinel_report.html
 ```
@@ -246,7 +246,7 @@ This generates a synthetic auth.log with realistic attack patterns and analyses 
 ### Run on your real system auth.log
 
 ```bash
-cd /home/mahesh/Desktop/Deloitte-Prep/LogSentinel
+cd /home/mahesh/Desktop/Deloitte-Prep/Warden
 sudo python3 logsentinel.py
 xdg-open logsentinel_report.html
 ```
@@ -449,7 +449,7 @@ These are the questions you will likely face in a Deloitte technical interview a
 
 **Q: What is the business value of this tool from a consulting perspective?**
 
-> In a Deloitte Risk Advisory engagement, a client might have thousands of servers generating authentication logs. Manually reviewing these is impractical. A tool like LogSentinel automates the detection of the highest-priority threats — credential compromise, root account attacks — and delivers a structured HTML report that a consultant can submit to the client. It converts raw log data into actionable findings with business-relevant severity ratings. This is exactly the kind of automation that increases engagement efficiency and client value.
+> In a Deloitte Risk Advisory engagement, a client might have thousands of servers generating authentication logs. Manually reviewing these is impractical. A tool like Warden automates the detection of the highest-priority threats — credential compromise, root account attacks — and delivers a structured HTML report that a consultant can submit to the client. It converts raw log data into actionable findings with business-relevant severity ratings. This is exactly the kind of automation that increases engagement efficiency and client value.
 
 ---
 
@@ -465,7 +465,7 @@ Use this in the Projects section of your resume:
 
 ---
 
-**LogSentinel — Security Log Analysis Engine** *(Python, SQLite, Linux)*
+**Warden — Security Log Analysis Engine** *(Python, SQLite, Linux)*
 
 Engineered a threat detection pipeline that ingests Linux authentication logs (`/var/log/auth.log`), applies rule-based correlation logic to detect 5 classes of security threats, and generates client-ready HTML audit reports. Implemented a regex-based parser handling 9 event types (failed SSH, credential compromise, privilege escalation), SQLite persistence layer for structured event storage and aggregate querying, and a 5-module detection engine identifying brute-force attacks (85+ failure threshold scoring), credential compromise via success-after-failure correlation, and root account targeting. Tool processes 1,000+ log events per second with zero external dependencies beyond Python stdlib.
 
