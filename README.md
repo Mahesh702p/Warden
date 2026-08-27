@@ -2,6 +2,8 @@
 
 > A lightweight Python security engine for parsing Linux authentication logs (`/var/log/auth.log`), detecting security threats using rule-based correlation logic, persisting audit events into SQLite, and generating self-contained HTML audit reports.
 
+> **Impact**: Reduces manual log analysis and audit preparation time by automating multi-vector threat correlation and executive reporting.
+
 ---
 
 ## 🌟 Overview
